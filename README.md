@@ -33,7 +33,7 @@ Linux / Networking / Cybersecurity Hands-On Lab
 ---
 ---
 
-## 1. Identifying the Network Interface
+### 1. Identifying the Network Interface
 
 Before capturing traffic, I checked the available network interfaces.
 
@@ -45,7 +45,7 @@ The lab used `eth0` as the example network interface.
 
 ---
 
-## 2. Capturing Network Traffic
+### 2. Capturing Network Traffic
 
 To begin capturing packets on `eth0`, run:
 
@@ -59,7 +59,7 @@ The command displays packets as they are captured and continues running until st
 
 After stopping, `tcpdump` displays a summary of the capture, including packet counts.
 
-### Command Breakdown
+#### Command Breakdown
 
 | Option    | Purpose                                    |
 | --------- | ------------------------------------------ |
@@ -69,7 +69,7 @@ After stopping, `tcpdump` displays a summary of the capture, including packet co
 
 ---
 
-## 3. Using Verbose Output and Disabling Name Resolution
+### 3. Using Verbose Output and Disabling Name Resolution
 
 To display more packet details and avoid reverse DNS lookups, run:
 
@@ -79,7 +79,7 @@ sudo tcpdump -i eth0 -vn
 
 ![2](https://i.imgur.com/8hPExEM.png)
 
-### Command Breakdown
+#### Command Breakdown
 
 | Option    | Purpose                                   |
 | --------- | ----------------------------------------- |
@@ -93,7 +93,7 @@ Disabling name resolution helps keep the output numeric and can reduce extra DNS
 
 ---
 
-## 4. Filtering DNS Traffic
+### 4. Filtering DNS Traffic
 
 The lab captured DNS traffic involving the DNS server `8.8.8.8` on port `53`.
 
@@ -105,7 +105,7 @@ sudo tcpdump -i eth0 -vn host 8.8.8.8 and port 53
 
 This filter matches packets where the source or destination address is `8.8.8.8` and the source or destination port is `53`.
 
-### Filter Breakdown
+#### Filter Breakdown
 
 | Filter         | Purpose                                             |
 | -------------- | --------------------------------------------------- |
@@ -113,7 +113,7 @@ This filter matches packets where the source or destination address is `8.8.8.8`
 | `port 53`      | Matches traffic using port 53                       |
 | `and`          | Requires both filter conditions to match            |
 
-### Running the Capture in the Background
+#### Running the Capture in the Background
 
 The lab placed the capture in the background so DNS traffic could be generated separately.
 
@@ -145,7 +145,7 @@ fg %1
 
 ![6](https://i.imgur.com/41rbn6Y.png)
 
-### Understanding the DNS Packets
+#### Understanding the DNS Packets
 
 The lab demonstrated two main packet types:
 
@@ -156,7 +156,7 @@ DNS commonly uses UDP port 53, although it can also use TCP.
 
 ---
 
-## 5. Capturing HTTP Traffic to a PCAP File
+### 5. Capturing HTTP Traffic to a PCAP File
 
 Next, I captured traffic using port 80 and saved the packets to `http.pcap`.
 
@@ -166,7 +166,7 @@ sudo tcpdump -i eth0 port 80 -w http.pcap &
 
 ![7](https://i.imgur.com/2OOD231.png)
 
-### Command Breakdown
+#### Command Breakdown
 
 | Option         | Purpose                            |
 | -------------- | ---------------------------------- |
@@ -206,7 +206,7 @@ fg %1
 
 ---
 
-## 6. Reading a Saved Packet Capture
+### 6. Reading a Saved Packet Capture
 
 After creating `http.pcap`, I used `tcpdump` to inspect the saved packets.
 
@@ -215,7 +215,7 @@ tcpdump -r http.pcap
 ```
 
 
-### Command Breakdown
+#### Command Breakdown
 
 | Option      | Purpose                                     |
 | ----------- | ------------------------------------------- |
@@ -229,7 +229,7 @@ A PCAP file stores captured packet data in a format that network-analysis tools 
 ---
 ---
 
-## Key Concepts Learned
+### Key Concepts Learned
 
 * **Packet capture:** Recording network packets for analysis.
 * **Network interface:** The interface through which traffic is observed.
@@ -243,7 +243,7 @@ A PCAP file stores captured packet data in a format that network-analysis tools 
 ---
 ---
 
-## Cybersecurity Relevance
+### Cybersecurity Relevance
 
 `tcpdump` is useful in both IT support and Security Operations Center (SOC) work.
 
@@ -257,7 +257,7 @@ A PCAP file stores captured packet data in a format that network-analysis tools 
 ---
 ---
 
-## Troubleshooting Notes
+### Troubleshooting Notes
 
 | Problem                          | What to check                                                                     |
 | -------------------------------- | --------------------------------------------------------------------------------- |
@@ -272,7 +272,7 @@ A PCAP file stores captured packet data in a format that network-analysis tools 
 ---
 ---
 
-## Skills Demonstrated
+### Skills Demonstrated
 
 * Linux command-line operations
 * Network packet capture
@@ -287,7 +287,7 @@ A PCAP file stores captured packet data in a format that network-analysis tools 
 ---
 ---
 
-## Final Takeaway
+### Final Takeaway
 
 This lab introduced `tcpdump` as a practical tool for observing and analyzing network traffic. I practiced capturing live packets, filtering DNS traffic, saving HTTP packet captures, and reading saved data.
 
